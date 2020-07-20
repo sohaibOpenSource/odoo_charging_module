@@ -1,0 +1,107 @@
+ <odoo>
+    <data>
+        <record id="supplier_prices_form" model="ir.ui.view">
+            <field name="name">supplier_prices_form</field>
+            <field name="model">supplier.prices</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="identifier"/>
+                                <field name="company_name"/>
+                                <field name="fee_price"/>
+                                <field name="time_price"/>
+                            </group>
+                            <group>
+                                <field name="evse_id"/>
+                                <field name="product_id"/>
+                                <field name="currency"/>
+                                <field name="total_kwh_price"/>
+                                <field name="total_price"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                          <page string="Fees">
+                              <group>
+                                    <group string='fees'>
+                                        <field name="has_minimum_billing_threshold"/>
+                                        <field name="minimum_billing_amount"/>
+                                    </group>
+                                    <group>
+                                        <field name="has_session_fee"/>
+                                        <field name="has_maximum_session_fee"/>
+                                        <field name="maximum_session_fee"/>
+                                    </group>
+                              </group>
+                              <field name="time_prices">
+                                  <tree editable="bottom" default_order="hour_from desc">
+                                      <field name="minute_price"/>
+                                      <field name="billing_each_timeframe"/>
+                                      <field name="hour_from"/>
+                                      <field name="hour_to"/>
+                                      <field name="kwh_price"/>
+                                  </tree>
+                              </field>
+                          </page>
+                          <page string="time Price">
+                               <group>
+                                    <field name="simple_minute_price"/>
+                                    <field name="has_complex_minute_price"/>
+                                    <field name="minimum_duration"/>
+                                    <field name="has_hour_of_the_day"/>
+                                    <field name="interval"/>
+                                </group>
+                          </page>
+                          <page string="kWh price">
+                                <group>
+                                    <field name="has_kWh_price"/>
+                                    <field name="kwh_price" attrs="{'invisible':[('has_kWh_price', '=', False)]}"/>
+                                    <field name="minimum_consumed_energy"/>
+                                    <field name="Has_time_based_kwh"/>
+                                    <field name="minimum_consumption"/>
+                                </group>
+                          </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="supplier_prices_tree" model="ir.ui.view">
+            <field name="name">supplier.prices.tree</field>
+            <field name="model">supplier.prices</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                            <field name="identifier"/>
+                            <field name="company_name"/>
+                            <field name="evse_id"/>
+                            <field name="product_id"/>
+                            <field name="currency"/>
+                </tree>
+            </field>
+        </record>
+        <record id="supplier_prices_action" model="ir.actions.act_window">
+            <field name="name">Supplier prices</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">supplier.prices</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_no_content_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="supplier_prices_all_menu" 
+                name="Supplier prices" 
+                parent="charging_station_menu" 
+                action="supplier_prices_action" 
+                groups="charging.group_charging_manager"
+                sequence="3"/>
+    </data>
+</odoo>

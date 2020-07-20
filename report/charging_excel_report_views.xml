@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="action_charging_excel_report" model="ir.actions.act_window">
+        <field name="name">Excel Report</field>
+        <field name="res_model">charging.excel.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Reporting menu -->
+    <menuitem id="menu_charging_excel_report"
+              name="Excel Report"
+              parent="charging_menu_root"
+              sequence="2"/>
+
+    <menuitem id="menu_cost_excel_report"
+              name="Cost Report"
+              parent="menu_charging_excel_report"
+              action="action_charging_excel_report"
+              sequence="1"/>
+
+    
+</odoo>

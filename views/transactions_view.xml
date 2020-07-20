@@ -1,0 +1,75 @@
+ <odoo>
+    <data>
+        <record id="transactions_form" model="ir.ui.view">
+            <field name="name">transactions.form</field>
+            <field name="model">transactions</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="session_id"/>
+                                <field name="provider_id"/>
+                                <field name="evse_id"/>
+                                <field name="partner_product_id"/>
+                                <field name="uid"/>
+                                <field name="metering_signature"/>
+                            </group>
+                            <group>
+                                <field name="charging_start"/>
+                                <field name="charging_end"/>
+                                <field name="session_start"/>
+                                <field name="session_end"/>
+                                <field name="meter_value_start"/>
+                                <field name="meter_value_end"/>
+                                <field name="country_code"/>
+                            </group>
+                        </group>    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="transactions_tree" model="ir.ui.view">
+            <field name="name">transactions.tree</field>
+            <field name="model">transactions</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="session_id"/>
+                    <field name="provider_id"/>
+                    <field name="evse_id"/>
+                    <field name="partner_product_id"/>
+                    <field name="uid"/>
+                    <field name="metering_signature"/>
+                    <field name="charging_start"/>
+                    <field name="charging_end"/>
+                    <field name="session_start"/>
+                    <field name="session_end"/>
+                    <field name="meter_value_start"/>
+                    <field name="meter_value_end"/>
+                    <field name="country_code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="transactions_action" model="ir.actions.act_window">
+            <field name="name">Transactions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">transactions</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_no_content_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="transactions_all_menu" 
+                name="transactions" 
+                parent="charging_station_menu" 
+                action="transactions_action" 
+                sequence="2"/>
+    </data>
+</odoo>

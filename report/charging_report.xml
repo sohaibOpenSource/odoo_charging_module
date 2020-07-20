@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report
+            id="charging_report_xls"
+            model="charging.excel.wizard"
+            string="Charging Excel Report"
+            report_type="xlsx"
+            name="charging.charging_report_xls.xslx"
+            file="charging.charging_report_xls.xslx"
+            menu="False"
+            attachment_use="False"/>
+</odoo>
