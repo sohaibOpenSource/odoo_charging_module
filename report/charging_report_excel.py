@@ -6,7 +6,7 @@ from odoo import models
 
 
 class ChargingXlsx(models.AbstractModel):
-    _name = 'report.charging_excel_report.charging_report_xls.xslx'
+    _name = 'report.charging.charging_report_xls.xslx'
     _inherit = 'report.report_xlsx.abstract'
 
     def get_lines(self, obj):

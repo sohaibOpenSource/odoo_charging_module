@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_charging_charging,charging.charging,model_charging_station,,1,1,1,0
+access_charging_charging,charging.charging,model_charging_station,,1,1,1,1
 access_transactions,transactions,model_transactions,,1,1,1,1
 access_supplier_prices,supplier_prices,model_supplier_prices,,1,1,1,1
+access_time_prices,time_prices,model_time_prices,,1,1,1,1

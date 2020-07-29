@@ -35,15 +35,25 @@
                                         <field name="maximum_session_fee"/>
                                     </group>
                               </group>
-                              <field name="time_prices">
-                                  <tree editable="bottom" default_order="hour_from desc">
-                                      <field name="minute_price"/>
-                                      <field name="billing_each_timeframe"/>
-                                      <field name="hour_from"/>
-                                      <field name="hour_to"/>
-                                      <field name="kwh_price"/>
-                                  </tree>
-                              </field>
+                              
+                               <field name="time_prices_ids" colspan="4" nolabel="1">
+                                    <tree string="Input Data" editable="bottom">
+                                        <field name="minute_price"/>
+                                        <field name="billing_each_timeframe"/>
+                                        <field name="hour_from"/>
+                                        <field name="hour_to"/>
+                                        <field name="kwh_price"/>
+                                    </tree>
+                                    <form string="Data Line">
+                                        <group col="4">
+                                            <field name="minute_price"/>
+                                            <field name="billing_each_timeframe"/>
+                                            <field name="hour_from"/>
+                                            <field name="hour_to"/>
+                                            <field name="kwh_price"/>
+                                        </group>
+                                    </form>
+                                </field>
                           </page>
                           <page string="time Price">
                                <group>

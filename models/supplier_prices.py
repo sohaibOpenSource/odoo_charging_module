@@ -29,20 +29,18 @@ class SupplierPrices(models.Model):
     minimum_duration = fields.Float(string='Minimum duration')
     has_hour_of_the_day = fields.Boolean(string='Has hour of the day')
     interval = fields.Char(string='Interval')
-    time_prices = fields.One2many('time.prices','supplier_id', string='Maximum session fee')
+    time_prices_ids = fields.One2many('time.prices','supplier_id', string='Maximum session fee')
     # For kWh price
     has_kWh_price = fields.Boolean(string='Has kWh price')
     kwh_price = fields.Float(string='kWh price')
     minimum_consumed_energy = fields.Float(string='Minimum consumed energy')
+    minimum_consumption = fields.Float(string='Minimum Consumption')
     Has_time_based_kwh = fields.Boolean(string='Has time based kwh')
     fee_price = fields.Float(string='fee_price')
     time_price = fields.Float(string='time_price')
     total_kwh_price = fields.Float(string='total kwh price')
     # Total Price 
-    total_price = fields.Monetary(  string='Total',
-                                    store=True, 
-                                    readonly=True, 
-                                    compute='_compute_supplier_prices')
+    total_price = fields.Float(string='total price',readonly=True)
       
 
     # calcule Total Price
@@ -66,7 +64,7 @@ class SupplierPrices(models.Model):
         # calculate time price
         if self.has_complex_minute_price:
             if self.interval =="start":
-                for line in self.time_prices:
+                for line in self.time_prices_ids:
                     timeframe = line.billing_each_timeframe * 60
                     if line.hour_from > line.hour_to:
                         duration = (line.hour_to - line.hour_from) * 60
@@ -76,7 +74,7 @@ class SupplierPrices(models.Model):
                     final_duration = duration + x
                     self.time_price+= final_duration * line.minute_price
             else :
-                for line in self.time_prices:
+                for line in self.time_prices_ids:
                     timeframe = line.billing_each_timeframe * 60
                     if line.hour_from > line.hour_to:
                         duration = (line.hour_to - line.hour_from) * 60
@@ -89,7 +87,7 @@ class SupplierPrices(models.Model):
             self.time_price = 24 * 60 * self.simple_minute_price     
         # calculate total kwh price
         if self.has_complex_minute_price:
-            for line in self.time_prices:
+            for line in self.time_prices_ids:
                 if line.hour_from > line.hour_to:
                     duration = (line.hour_to - line.hour_from) * 60
                 else :
@@ -115,3 +113,4 @@ class TimePrices(models.Model):
     hour_from = fields.Float(string='Hour from')
     hour_to = fields.Float(string='Hour to')
     kwh_price = fields.Float(string='kWh price')
+    

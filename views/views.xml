@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="">
                     <header>
-                       <button name="get_data" type="object" string="Get Data" class="oe_highlight o_invoice_validate"/>
+                       <button name="get_data" type="object" string="Get Transactions" class="oe_highlight o_invoice_validate"/>
                        <button name="get_supplier_prices_data" type="object" string="Get Supplier Prices" class="oe_highlight o_invoice_validate"/>
                     </header>
                     <sheet>
